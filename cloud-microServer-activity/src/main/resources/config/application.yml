@@ -1,0 +1,21 @@
+#Eureka Server Configuration for DEV
+server:
+  port: 8081
+eureka:
+  name: activity
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    availabilityZones:
+      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
+    serviceUrl:
+      defaultZone: ${vcap.services.sessionqaeureka.credentials.uri:http://localhost:8761/eureka/}
+# Eureka Server Configuration for DEV
+  instance:
+    appName: activity
+    hostname: localhost
+    leaseRenewalIntervalInSeconds: 50
+    leaseExpirationDurationInSeconds: 30
+    preferIpAddress: false
+    statusPageUrlPath: /activity/admin/info
+    healthCheckUrlPath: /activity/admin/health      

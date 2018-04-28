@@ -1,0 +1,28 @@
+#Eureka Server Configuration for DEV
+spring:
+  application:
+    name: zuul-service
+server:
+  port: 8765
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#routes to serviceId
+zuul:
+  routes:
+    producer-service:
+      path: /producer-service/**
+      serviceId: producer-service
+    order-service:
+      path: /order-service/**
+      serviceId: order-service
+    ## routes to url
+    producer-service-url:
+      path: /producer-service-url/**
+      url: http://localhost:8082/
+    order-service-url:
+      path: /order-service-url/**
+      url: http://localhost:8083/
