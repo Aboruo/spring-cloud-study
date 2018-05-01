@@ -10,3 +10,9 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+loadbalance-service/target
+cloud-server-eureka/target
+cloud-microServer-activity/target
+order-service/target
+order-service-2/target
+producer-service/target
