@@ -1,0 +1,13 @@
+package com.aboruo.order.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class OrderController {
+	@RequestMapping(value="/hello",method= {RequestMethod.GET,RequestMethod.POST})
+	public String hello() {
+		return "hello,this is order-service-2";
+	}
+}
