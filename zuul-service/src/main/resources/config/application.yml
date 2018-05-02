@@ -19,6 +19,10 @@ zuul:
     order-service:
       path: /order-service/**
       serviceId: order-service
+    ## add loadbalance-service
+    loadbalance-service:
+      path: /loadbalance-service/**
+      serviceId: loadbalance-service
     ## routes to url
     producer-service-url:
       path: /producer-service-url/**
@@ -26,3 +30,7 @@ zuul:
     order-service-url:
       path: /order-service-url/**
       url: http://localhost:8083/
+    ## add loadbalance-service url
+    loadbalance-service-url:
+      path: /loadbalance-service-url/**
+      url: http://localhost:8762/
