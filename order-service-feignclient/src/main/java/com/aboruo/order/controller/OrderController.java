@@ -1,11 +1,12 @@
 package com.aboruo.order.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aboruo.order.service.ProducerService;
+import com.aboruo.order.service.ProducerServiceFeignInter;
 /**
 	 * @Title:  OrderController
 	 * @Description:  订单处理类
@@ -13,9 +14,10 @@ import com.aboruo.order.service.ProducerService;
 	 * @date 2018年5月2日 下午6:33:41
  */
 @RestController
+@EnableFeignClients
 public class OrderController {
 	@Autowired
-	private ProducerService producerService;
+	private ProducerServiceFeignInter producerServiceFeignInter;
 	/**
 		 * @Title: hello
 		 * @Description:  接口测试方法
@@ -36,6 +38,6 @@ public class OrderController {
 	 */
 	@RequestMapping(value="/product/hello",method= {RequestMethod.GET,RequestMethod.POST})
 	public String callProducerService() {
-		return producerService.callProducerService();
+		return producerServiceFeignInter.hello();
 	}
 }

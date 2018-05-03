@@ -154,5 +154,6 @@
     <module>zuul-service</module>
     <module>loadbalance-service</module>
     <module>order-service-2</module>
+    <module>order-service-feignclient</module>
   </modules>
 </project>
