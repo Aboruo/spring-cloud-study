@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProducerController {
-	@RequestMapping(value="/hello",method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/hello",method= RequestMethod.GET)
 	public String hello() {
 		return "hello,this is producer-service";
 	}

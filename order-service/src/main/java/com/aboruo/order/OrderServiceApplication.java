@@ -19,7 +19,7 @@ public class OrderServiceApplication {
 		SpringApplication.run(OrderServiceApplication.class, args);
 	}
 	@Bean
-	@LoadBalanced	
+	@LoadBalanced
 	public	RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
