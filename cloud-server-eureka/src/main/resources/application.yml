@@ -10,3 +10,5 @@ eureka:
     decoderName: alioss-file
   serviceUrl:
     defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false

@@ -1,9 +1,12 @@
 package com.aboruo.order.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.aboruo.order.service.ProducerService;
 /**
@@ -14,8 +17,11 @@ import com.aboruo.order.service.ProducerService;
  */
 @RestController
 public class OrderController {
+	private Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	private ProducerService producerService;
+	@Autowired
+	private RestTemplate restTemplate;
 	/**
 		 * @Title: hello
 		 * @Description:  接口测试方法
@@ -25,7 +31,8 @@ public class OrderController {
 	 */
 	@RequestMapping(value="/hello",method= {RequestMethod.GET,RequestMethod.POST})
 	public String hello() {
-		return "hello,this is order-service";
+		logger.info("order-service calling producer-service");
+		return restTemplate.getForEntity("http://PRODUCER-SERVICE/hello", String.class).getBody();
 	}
 	/**
 		 * @Title: callProducerService

@@ -1,11 +1,27 @@
 #Eureka Server Configuration for DEV
 spring:
-  profiles:
-    active: native
+  # profiles:
+  #  active: native
   application:
     name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          # uri 处可以使用占位符
+          uri: https://gitee.com/aboruo/configcluster.git
+          #searchPaths: /springCloud-config/cloud-study/order-service 此处可以使用占位符
+          searchPaths: /springCloud-config/cloud-study/{application}
+          username: zxb4834@163.com
+          password: superdraggon_217
 server:
   port: 8166
+## health check config -- start ---
+security.user.name: admin
+security.user.password: 123456
+management.security.enabled: false
+management.security.role: ADMIN
+## health check config -- end ---
 eureka:
   client:
     registerWithEureka: true

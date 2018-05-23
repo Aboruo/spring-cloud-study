@@ -1,8 +1,13 @@
+server:
+  port: 8085
 spring:
   application:
-    name: orderservicefeign
-  port: 8085
+    name: order-service
   cloud:
     config:
-      profile: dev
-      uri: http://localhost:8166/
+      discovery:
+        enabled: true
+        serviceId: config-service
+      profile: prod
+      label: master
+      uri: http://10.16.65.52:8166/

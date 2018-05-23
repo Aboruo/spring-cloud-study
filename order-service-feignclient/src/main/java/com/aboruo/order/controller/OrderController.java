@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.context.event.SimpleApplicationEventMulticaster;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.aboruo.order.service.ProducerServiceFeignInter;
 /**
 	 * @Title:  OrderController
@@ -19,13 +19,13 @@ import com.aboruo.order.service.ProducerServiceFeignInter;
 @EnableFeignClients(basePackages="com.aboruo.order.service")
 @RefreshScope
 public class OrderController {
-	@Value("${configParam}")
-	private String configParam;
+	@Value("${from}")
+	private String from;
 	@Autowired
 	private ProducerServiceFeignInter producerServiceFeignInter;
-	@RequestMapping(value="/configParam",method=RequestMethod.GET)
+	@RequestMapping(value="/from",method=RequestMethod.GET)
 	public String getConfigParam() {
-		return this.configParam;
+		return this.from;
 	}
 	/**
 		 * @Title: hello
