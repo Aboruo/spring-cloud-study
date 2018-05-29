@@ -171,5 +171,6 @@
     <module>order-service-2</module>
     <module>order-service-feignclient</module>
     <module>config-service</module>
+    <module>rabbitstream-hello</module>
   </modules>
 </project>

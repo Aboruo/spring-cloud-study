@@ -1,0 +1,22 @@
+#Eureka Server Configuration for DEV
+spring:
+  application:
+    name: rabbitstream-hello
+security.user.name: admin
+security.user.password: 123456
+management.security.enabled: false
+management.security.role: ADMIN
+server:
+  port: 7085
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://10.16.65.52:8761/eureka/
+# Eureka Server Configuration for DEV
+  instance:
+    appName: rabbitstream-hello
+    leaseRenewalIntervalInSeconds: 50
+    leaseExpirationDurationInSeconds: 30
+    # preferIpAddress: false
