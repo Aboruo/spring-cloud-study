@@ -2,6 +2,16 @@
 spring:
   application:
     name: rabbitstream-hello
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: raw-sensor-data
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: springcloud
+    password: 123456
 security.user.name: admin
 security.user.password: 123456
 management.security.enabled: false
