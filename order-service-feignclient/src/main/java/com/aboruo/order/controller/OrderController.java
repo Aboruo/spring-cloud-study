@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.aboruo.order.channel.SinkSender;
 import com.aboruo.order.service.ProducerServiceFeignInter;
 /**
 	 * @Title:  OrderController
@@ -23,6 +25,12 @@ public class OrderController {
 	private String from;
 	@Autowired
 	private ProducerServiceFeignInter producerServiceFeignInter;
+	@Autowired
+	private SinkSender sinkSender;
+	@RequestMapping(value="/testSender",method= {RequestMethod.GET,RequestMethod.POST})
+	public void testSender() {
+		sinkSender.output().send(MessageBuilder.withPayload("This msg is from SinkSender service").build());
+	}
 	@RequestMapping(value="/from",method=RequestMethod.GET)
 	public String getConfigParam() {
 		return this.from;

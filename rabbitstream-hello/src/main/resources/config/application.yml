@@ -7,6 +7,8 @@ spring:
       bindings:
         input:
           destination: raw-sensor-data
+        output:
+          destination: raw-sensor-data
   rabbitmq:
     host: 127.0.0.1
     port: 5672
