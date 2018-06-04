@@ -23,6 +23,8 @@ import com.aboruo.order.service.ProducerServiceFeignInter;
 public class OrderController {
 	@Value("${from}")
 	private String from;
+	@Value(value="${fixdelay}")
+	private String fixdelay;
 	@Autowired
 	private ProducerServiceFeignInter producerServiceFeignInter;
 	@Autowired
@@ -33,7 +35,7 @@ public class OrderController {
 	}
 	@RequestMapping(value="/from",method=RequestMethod.GET)
 	public String getConfigParam() {
-		return this.from;
+		return this.from + "----" + this.fixdelay;
 	}
 	/**
 		 * @Title: hello
